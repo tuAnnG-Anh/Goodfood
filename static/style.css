@@ -67,7 +67,7 @@ html{
 .container {
     width: 100%;
     max-width: 1366px;
-    margin: 0px auto;
+    margin: 0 auto;
 }
 
 
@@ -130,9 +130,7 @@ section {
     font-weight: 400;
 }
 
-.container {
-    margin: 0 76px;
-}
+
 
 .slogan button {
     padding: 16px 80px;
@@ -190,7 +188,7 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+        
 .food-menu {
     background-color: var(--white);
     border-radius: 2rem;
