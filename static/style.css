@@ -187,6 +187,8 @@ section {
 
 #food-menu-section {
     background-image: url(../assets/katherine-chase-4MMK78S7eyk-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .food-menu {
