@@ -1,0 +1,30 @@
+@media only screen and (max-width: 739px    ) {
+    #nav {
+        padding: 6px 4px;
+    }
+    #nav .logo {
+        font-size: 1.6rem;
+    }
+    .menu-nav ul {
+        display: none;
+        list-style-type: none;
+    }
+    .slogan h1 {
+        font-size: 39px;
+    }
+
+}
+
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+    #nav {
+        padding: 10px 8px;
+    }
+    #nav .logo {
+        font-size: 2rem;
+    }
+  
+    .slogan h1 {
+        font-size: 96px;
+    }
+    
+}
