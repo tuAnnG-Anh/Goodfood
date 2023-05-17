@@ -29,7 +29,6 @@ Array.from(categories).forEach((item, index) => {
         currCat.classList.remove('active')
         e.target.classList.add('active')
         foodMenuList.classList = 'food-item-all row ' + e.target.getAttribute('data-food-type')
-        console.log( e.target.getAttribute('data-food-type'))
     }
 })
 
