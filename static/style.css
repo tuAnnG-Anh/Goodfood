@@ -82,7 +82,7 @@ html {
     border-radius: 10px;
     color: var(--white);
     background-color: #0F9D58;
-    transition: all 1s ease;
+    transition: transform 1s ease;
 }
 
 #back-to-top i{
@@ -118,7 +118,7 @@ html {
 
 .left-to-right {
     transform: translateX(-150%);
-    transition: all 1s ease-in-out 0s;
+    transition: transform 1s ease-in-out 0s;
     ;
 }
 
@@ -127,7 +127,7 @@ html {
     font-weight: 600;
     padding: 2px 22px;
     margin: 0 6px;
-    transition: all 0.5s ease-in-out 0s;
+    transition: transform 0.5s ease-in-out 0s;
     cursor: pointer;
 }
 
@@ -149,7 +149,7 @@ html {
     font-size: 32px;
     cursor: pointer;
     padding: 2px;
-    transition: all 0.3s ease-out 0s;
+    transition: transform 0.3s ease-out 0s;
 }
 
 section {
@@ -186,7 +186,7 @@ section {
     border-radius: 2rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.5s ease-in-out 0s;
+    transition: transform 0.5s ease-in-out 0s;
 }
 
 .slogan button:hover {
@@ -283,7 +283,7 @@ section {
     margin: 0 16px;
     border-radius: 1rem;
     border: #0F9D58 1px solid;
-    transition: all 0.5s ease 0s;
+    transition: transform 0.5s ease 0s;
     background-color: var(--white);
     cursor: pointer;
     transform: scale(0);
@@ -334,7 +334,7 @@ section {
     padding: 16px;
     height: 30rem;
     transform: translateY(50%);
-    transition: all 0.5s ease;
+    transition: transform 0.5s ease;
 }
 
 .item-wrap {
@@ -386,7 +386,7 @@ section {
 .testimonial-item {
     width: 33.33%;
     padding: 1rem;
-    transition: all .5s ease-in;
+    transition: transform .5s ease-in;
     transform: scale(0);
 }
 
