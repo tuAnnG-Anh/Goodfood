@@ -16,6 +16,24 @@ Array.from(menuItems).forEach((item, index) => {
         item.classList.add('active')
     }
 })
+//category
+
+let foodMenuList = document.querySelector('.food-item-all')
+let foodCategory = document.querySelector('.food-category')
+
+let categories = foodCategory.querySelectorAll('button')
+
+Array.from(categories).forEach((item, index) => {
+    item.onclick = (e) => {
+        let currCat = foodCategory.querySelector('button.active')
+        currCat.classList.remove('active')
+        e.target.classList.add('active')
+        foodMenuList.classList = 'food-item-all row ' + e.target.getAttribute('data-food-type')
+        console.log( e.target.getAttribute('data-food-type'))
+    }
+})
+
+//scroll
 let scroll = window.requestAnimationFrame || function (callback) { window.setTimeout(callback, 1000 / 60) }
 
 let elToShow = document.querySelectorAll('.play-on-scroll')
@@ -45,3 +63,5 @@ loop = () => {
 }
 
 loop()
+
+

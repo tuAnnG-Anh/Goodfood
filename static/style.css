@@ -290,20 +290,43 @@ section {
 
 }
 
-.food-category>:first-child {
+
+.food-category button:hover,
+.food-category button.active {
     background-color: #0F9D58;
     color: var(--white);
-}
-
-
-.food-category button:hover {
-    color: #fff;
-    background-color: #0F9D58;
 }
 
 .food-item-all {
     margin-top: 3rem;
 
+}
+.food-category button.active{
+
+}
+
+.food-item-all>div {
+    display: none;
+}
+
+.food-item-all.all>div {
+    display: block;
+}
+
+.food-item-all.salad>div.salad-type {
+    display: block;
+}
+
+.food-item-all.lorem>div.lorem-type {
+    display: block;
+}
+
+.food-item-all.ipsum>div.ipsum-type {
+    display: block;
+}
+
+.food-item-all.dolor>div.dolor-type {
+    display: block;
 }
 
 .food-item {
