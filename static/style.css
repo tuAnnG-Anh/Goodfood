@@ -76,17 +76,22 @@ html {
 #back-to-top {
     position: fixed;
     bottom: 70px;
+    font-size: 2rem;
+    padding: .5rem;
     right: 70px;
     border-radius: 10px;
     color: var(--white);
     background-color: #0F9D58;
     transition: 1s ease-in;
+    z-index: 99;
 }
 
 #back-to-top i{
-    font-size: 44px;
+    
 }
-
+.mb-nav {
+    display: none;
+}
 #nav {
     background-image: linear-gradient(to right, rgb(239, 255, 239) 0%, rgba(242, 255, 254, 0.4) 54%);
     display: flex;
@@ -178,7 +183,7 @@ section {
 }
 
 .slogan button {
-    padding: 16px 80px;
+    padding: 1rem 5rem;
     border: #0F9D58 2px solid;
     border-radius: 2rem;
     font-weight: 600;
@@ -190,6 +195,8 @@ section {
     background-color: #0F9D58;
     color: rgb(239, 255, 239)
 }
+
+
 /* ABOUT */
 #about {
     background: linear-gradient(90deg, rgba(203, 242, 203, 1) 0%, rgba(180, 206, 187, 1) 54%, rgba(251, 238, 252, 1) 100%);
@@ -256,6 +263,7 @@ section {
 .food-menu {
     background-color: var(--white);
     border-radius: 2rem;
+    padding: 64px;
 }
 
 .food-menu h1 {
@@ -270,10 +278,6 @@ section {
     background-attachment: fixed;
 }
 
-#food-menu-section .food-menu {
-    padding: 64px;
-}
-
 .sc-1 {
     transform: scale(1) !important;
 }
@@ -284,15 +288,22 @@ section {
     margin: 0 16px;
     border-radius: 1rem;
     border: #0F9D58 1px solid;
-    transition: 0.5s ease;
     background-color: var(--white);
+    width: max-content;
     cursor: pointer;
+
+}
+.food-category > *{
     transform: scale(0);
+    transition: 0.5s ease;
 
 }
 
-.food-category button.start {
+.food-category > *.start{
     transform: scale(1);
+
+}
+.food-category button.start {
 
 }
 .food-category button:hover,
@@ -396,8 +407,6 @@ section {
 .testimonial-item {
     width: 33.33%;
     padding: 1rem;
-    transition: transform .5s ease-in;
-    transform: scale(0);
 }
 
 .review-wrap {
@@ -405,8 +414,22 @@ section {
     border-radius: 3rem;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     background-color: var(--white);
+    transition: transform .5s ease-in;
+}
+.sc-12{
+    transform: scale(1.2) !important;
+}
+.active.start{
+    transition: transform .5s ease-in;
+    transform: unset;
 }
 
+.zoom{
+    transform: scale(0);
+}
+.review-wrap.start{
+    transform: scale(1);
+}
 .review-content {
     padding: 3rem;
     border-bottom: .125rem solid;
@@ -422,10 +445,6 @@ section {
     transform: translateX(-50%);
     bottom: -2.5rem;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-
-.sc-12 {
-    transform: scale(1.2) !important;
 }
 
 .review-info {
@@ -486,14 +505,18 @@ section {
 }
 
 .input-group button {
+    padding: .5rem 1rem;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color);
+    border-radius: 1rem;
+    color: var(--white);
     font-weight: 600;
     cursor: pointer;
-    padding: 0.5rem 1rem;
-    outline: none;
-    border-style: none;
-    border-radius: 1rem;
 }
-
+.container .row > *{
+   padding: 1rem;
+}
 .scale-up-center {
     transition: transform 0.4s ease-in;
 }

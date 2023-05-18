@@ -1,30 +1,130 @@
-/* @media only screen and (max-width: 739px    ) {
-    #nav {
-        padding: 6px 4px;
-    }
-    #nav .logo {
-        font-size: 1.6rem;
-    }
-    .menu-nav ul {
-        display: none;
-        list-style-type: none;
-    }
-    .slogan h1 {
-        font-size: 39px;
+@media only screen and (max-width: 739px) {
+    * {
+        font-size: 13px;
     }
 
+    .menu-nav {
+        display: none;
+    }
+
+    .mb-nav {
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--white);
+        z-index: 99;
+        overflow: hidden;
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    .mb-move-item {
+        position: absolute;
+        left: 0;
+        width: 25%;
+        height: 100%;
+        background-color: var(--primary-color);
+        transition: .5s ease-in-out;
+    }
+
+    .mb-nav-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 25%;
+        padding: 0.9rem 0;
+        flex-wrap: wrap;
+    }
+
+    .mb-nav-item a,
+    .mb-nav-item a i {
+        font-size: 2rem;
+        color: var(--secon-color);
+        z-index: 2;
+        transition: .5s ease-in-out;
+    }
+
+    .mb-nav-item.active i {
+        color: var(--white);
+    }
+
+    #nav {
+        padding: .5rem;
+    }
+
+    .bx-cart-alt {
+        font-size: 2rem;
+    }
+
+    h1 {
+        font-size: 3rem !important;
+    }
+    span {
+        font-size: inherit;
+    }
+    .slogan {
+        width: 100%;
+    }
+
+    .about-image {
+        display: none;
+    }
+    .about-slogan {
+        width: 100%;
+        padding: 4rem;
+        background-color: var(--white);
+        border-radius: 2rem;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+        position:static;
+    }
+    .mb-slogan {
+        padding: 1rem;
+    }
+    .about-slogan h3 {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+        color: var(--grey);
+    }
+    .food-menu {
+        padding: 4rem 0;
+    }
+    .food-item{
+        width: 50%;
+    }
+    .food-category {
+        overflow-y: scroll;
+        flex-wrap: nowrap;
+    }
+    .testimonial-item {
+        width: 100%;
+    }
+    .sc-12{
+        transform: scale(1) !important;
+    }
+    .container .row > *{
+        width: 100%;
+    }
+    #back-to-top {
+        bottom: 6rem;
+        right: 1rem;
+    }
 }
 
 @media only screen and (min-width: 740px) and (max-width: 1023px) {
     #nav {
         padding: 10px 8px;
     }
+
     #nav .logo {
         font-size: 2rem;
     }
-  
+
     .slogan h1 {
         font-size: 96px;
     }
-    
-} */
+
+}
