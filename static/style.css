@@ -404,6 +404,9 @@ section {
     transform: scale(1);
 
 }
+.testimonial-item.active{
+    z-index: 1;
+}
 .testimonial-item {
     width: 33.33%;
     padding: 1rem;
