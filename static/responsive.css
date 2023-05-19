@@ -99,6 +99,9 @@
         overflow-y: scroll;
         flex-wrap: nowrap;
     }
+    .food-category > * button{
+        margin: 0;
+    }
     .testimonial-item {
         width: 100%;
     }
