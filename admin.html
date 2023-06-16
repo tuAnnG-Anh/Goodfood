@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thêm sản phẩm</title>
+    <link rel="stylesheet" href="./static/product.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="sidebar">
+        <ul>
+          <li class="move-item"></li>
+          <li class="fw-600 active">Sản phẩm</li>
+          <li class="fw-600">Loại hàng</li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="container">
+        <div class="form-product">
+          <div class="input-product">
+            <div class="title">
+              <h3>Input product's detail information</h3>
+            </div>
+            <div class="input-product_main">
+              <form action="">
+                <div class="row-product">
+                  <label for="" class="fw-600">Product Name</label>
+                  <input type="text" name="product_name" />
+                </div>
+                <div class="row-product">
+                  <label for="" class="fw-600">Category Name</label>
+                  <select name="category_name" class="list-categorys">
+                    <option value="default">--Please choose an option--</option>
+                    <!-- <option value="lorem">Lorem</option>
+                                    <option value="ipsum">Ipsum</option>
+                                    <option value="dolor">Dolor
+                                    </option>
+                                    <option value="salad">Salad</option> -->
+                  </select>
+                </div>
+                <div class="row-product">
+                  <label for="" class="fw-600">Price</label>
+                  <input type="text" name="product_price" />
+                </div>
+                <div class="row-product">
+                  <label for="" class="fw-600">Quantity</label>
+                  <input type="text" name="product_quantity" />
+                </div>
+                <!-- <div class="row-product">
+                                <label for="">Total</label>
+                                <input type="text" name="product_name">
+                            </div> -->
+                <button class="fw-600 btn-add" onclick="handleCreateProduct()">
+                  Add Product
+                </button>
+                <button
+                  class="fw-600 btn-reset"
+                  type="button"
+                  onclick="clearInput()"
+                >
+                  Reset
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="manager-product">
+            <div class="title">
+              <h3>Managerment Product</h3>
+            </div>
+            <div class="manager-product_main">
+              <table id="list-products">
+                <tr class="fw-600">
+                  <th>ID</th>
+                  <th>Product Name</th>
+                  <th>Category Name</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./static/main.js"></script>
+    <script src="./static/modules/product.js"></script>
+  </body>
+</html>
