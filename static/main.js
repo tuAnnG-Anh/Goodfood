@@ -1,3 +1,6 @@
+var productApi = "http://localhost:3000/product";
+var categoryApi = "http://localhost:3000/categorys";
+
 window.addEventListener("load", function () {
   var loadingOverlay = document.getElementById("loading-overlay");
   var content = document.getElementById("content");
@@ -7,8 +10,55 @@ window.addEventListener("load", function () {
     content.style.opacity = 1;
     content.style.display = "block";
   }, 1000);
+  getProduct(renderProductMain);
 });
-
+function getProduct(callback) {
+  fetch(productApi)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(callback);
+}
+function getCategory(callback) {
+  fetch(categoryApi)
+    .then((response) => {
+      return response.json();
+    })
+    .then(callback);
+}
+function renderProductMain(products) {
+  var listProduct = document.querySelector(".food-item-all");
+  products.map((product) => {
+    getCategory((categorys) => {
+      var result = categorys.find((category) => {
+        return category.id === product.id_category;
+      });
+      listProduct.innerHTML += `
+            <div class="food-item play-on-scroll ${result.name_category.toLowerCase()}-type">
+                <div class="item-wrap">
+                  <div class="item-image">
+                    <div
+                      class="img-food bg-img scale-up-center"
+                      style="
+                        background-image: url(${product.product_img});
+                      "
+                    ></div>
+                  </div>
+                  <div class="item-info align-items-center">
+                    <div>
+                      <h3>${product.name_product}</h3>
+                      <span>${product.price}$</span>
+                    </div>
+                    <div class="shopping-bag">
+                      <i class="bx bx-cart-alt primary-color"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        `;
+    });
+  });
+}
 // back tot top
 let backToTopBtn = document.querySelector("#back-to-top");
 window.onscroll = () => {
@@ -31,7 +81,6 @@ Array.from(menuItems).forEach((item, index) => {
   };
 });
 //category
-
 let foodMenuList = document.querySelector(".food-item-all");
 let foodCategory = document.querySelector(".food-category");
 let categories = foodCategory.querySelectorAll("button");
@@ -76,7 +125,6 @@ loop = () => {
       item.classList.remove("start");
     }
   });
-
   scroll(loop);
 };
 
@@ -95,25 +143,35 @@ bottomNavItems.forEach((item, index) => {
   };
 });
 //cart
-var cartList = document.querySelector(".cart-list-item");
 var addToCart = document.querySelectorAll(".shopping-bag .bx-cart-alt");
-var cartnotice = document.querySelector(".cart-notice");
 addToCart.forEach((item, index) => {
   item.onclick = (e) => {
+    var cartnotice = document.querySelector(".cart-notice");
+    var cartList = document.querySelector(".cart-list-item");
+    var nameProduct = e.target
+      .closest(".food-item")
+      .querySelector("h3").innerText;
+    var imgUrl = e.target.closest(".food-item").querySelector(".img-food");
+    var priceProduct = e.target
+      .closest(".food-item")
+      .querySelector("span").innerText;
+    console.log();
     cartList.innerHTML += `
         <li class="cart-item">
         <div class="cart-item-img">
-            <img src="./assets/sina-piryae-bBzjWthTqb8-unsplash.jpg" alt="">
+            <img src="${
+              imgUrl.style.backgroundImage.match(/url\((['"]?)(.*?)\1\)/)[2]
+            }" alt="">
         </div>
         <div class="cart-item-info">
             <div class="row row-cart-item">
                 <div class="cart-item-name">
                     <h5>
-                        Lorem
+                        ${nameProduct}
                     </h5>
                 </div>
                 <div class="cart-item-price">
-                    <span class="">120$</span>
+                    <span class="">${priceProduct}</span>
                     <div class="cart-item-quantity">
                         <span>
                             x
@@ -136,14 +194,15 @@ addToCart.forEach((item, index) => {
   };
 });
 
-let shoppingList = document.querySelector(".shopping-list");
 //change quantity cart
 function delCartItem(e) {
+  let shoppingList = document.querySelector(".shopping-list");
+
   var cartnotice = document.querySelector(".cart-notice");
   let cartItems = document.querySelectorAll(".cart-item");
   let cartItemsLength = cartItems.length;
   e.target.parentNode.closest(".cart-item").remove();
-  cartnotice.innerHTML--;
+  cartnotice.innerText--;
   cartItemsLength--;
   if (cartItemsLength === 0) {
     shoppingList.classList.add("no-cart");
@@ -152,14 +211,14 @@ function delCartItem(e) {
 function reduceCartItem(e) {
   var cartnotice = document.querySelector(".cart-notice");
   let quantityCart = e.target.parentNode.querySelector(".js-quantity");
-  if (Number(quantityCart.innerText) >= 1 && Number(cartnotice.innerHTML) > 0) {
+  if (Number(quantityCart.innerText) >= 1 && Number(cartnotice.innerText) > 0) {
     quantityCart.innerText = `${Number(quantityCart.innerText) - 1}`;
-    cartnotice.innerHTML = `${Number(cartnotice.innerHTML) - 1}`;
+    cartnotice.innerText = `${Number(cartnotice.innerText) - 1}`;
   }
   if (Number(quantityCart.innerText) == 0) {
     e.target.parentNode.closest(".cart-item").remove();
   }
-  if (Number(cartnotice.innerHTML) === 0) {
+  if (Number(cartnotice.innerText) === 0) {
     shoppingList.classList.add("no-cart");
   }
 }
