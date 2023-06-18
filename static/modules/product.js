@@ -1,12 +1,12 @@
 var productApi = "http://localhost:3000/product";
 var categoryApi = "http://localhost:3000/categorys";
 
-function start() {
+function startProduct() {
   getProduct(renderProduct);
   getCategory(renderNameCategorys);
-  handleCreateProduct();
 }
-start();
+startProduct();
+
 function getProduct(callback) {
   fetch(productApi)
     .then(function (response) {
@@ -32,7 +32,7 @@ function renderNameCategorys(categorys) {
 }
 function renderProduct(products) {
   var listProduct = document.getElementById("list-products");
-  products.map(function (product) {
+  products.map((product) => {
     getCategory((categorys) => {
       var result = categorys.find((category) => {
         return category.id === product.id_category;
@@ -107,35 +107,30 @@ function clearInput() {
   });
   document.querySelector("form select").selectedIndex = 0;
 }
-function handleCreateProduct() {
-  var createBtn = document.querySelector(".btn-add");
-  createBtn.onclick = function () {
-    var product_name = document.querySelector(
-      'input[name="product_name"]'
-    ).value;
-    var product_img = document
-      .querySelector(".img-preview_1")
-      .getAttribute("src");
-    var product_price = document.querySelector(
-      'input[name="product_price"]'
-    ).value;
-    var product_quantity = document.querySelector(
-      'input[name="product_quantity"]'
-    ).value;
-    var category_id =
-      document.querySelector("select").options[
-        document.querySelector("select").selectedIndex
-      ].value;
-    var newProduct = {
-      id_category: Number(category_id),
-      name_product: product_name,
-      product_img: product_img,
-      price: Number(product_price),
-      quantity: Number(product_quantity),
-    };
-    createProduct(newProduct);
-    clearInput();
+function handleCreateProduct(event) {
+  var product_name = document.querySelector('input[name="product_name"]').value;
+  var product_img = document
+    .querySelector(".img-preview_1")
+    .getAttribute("src");
+  var product_price = document.querySelector(
+    'input[name="product_price"]'
+  ).value;
+  var product_quantity = document.querySelector(
+    'input[name="product_quantity"]'
+  ).value;
+  var category_id =
+    document.querySelector("select").options[
+      document.querySelector("select").selectedIndex
+    ].value;
+  var newProduct = {
+    id_category: Number(category_id),
+    name_product: product_name,
+    product_img: product_img,
+    price: Number(product_price),
+    quantity: Number(product_quantity),
   };
+  createProduct(newProduct);
+  clearInput();
 }
 
 function createProduct(data) {

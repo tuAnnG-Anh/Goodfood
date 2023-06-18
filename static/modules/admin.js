@@ -23,10 +23,9 @@ const targetEl = document.querySelector(".container");
 const load = (nameFileHtml) => {
   let sidebarItem = document.querySelectorAll(".sidebar .sidebar-item");
   let currItem = document.querySelector(".sidebar-item.active");
-  console.log(currItem);
   sidebarItem.forEach((item) => {
-    item.classList.add(".actice");
-    currItem.classList.remove("actice");
+    item.classList.add("active");
+    currItem.classList.remove("active");
   });
   fetch(`/${nameFileHtml}.html`)
     .then((res) => {
@@ -37,8 +36,9 @@ const load = (nameFileHtml) => {
     .then((htmlSnippet) => {
       targetEl.innerHTML = htmlSnippet;
     });
-  start();
 };
 function logout() {
-  window.location.href = "/index.html";
+  if (confirm("Are you sure you want to sign out")) {
+    window.location.href = "/index.html";
+  }
 }

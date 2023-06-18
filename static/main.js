@@ -32,9 +32,8 @@ Array.from(menuItems).forEach((item, index) => {
 });
 //category
 
-let foodMenuList = document.querySelector(".food-item-all");
 let foodCategory = document.querySelector(".food-category");
-let categories = foodCategory.querySelectorAll("button");
+let categories = document.querySelectorAll(".food-item-all button");
 Array.from(categories).forEach((item, index) => {
   item.onclick = (e) => {
     let currCat = foodCategory.querySelector("button.active");
@@ -94,6 +93,82 @@ bottomNavItems.forEach((item, index) => {
     bottomMove.style.left = index * 25 + "%";
   };
 });
+//cart
+var cartList = document.querySelector(".cart-list-item");
+var addToCart = document.querySelectorAll(".shopping-bag .bx-cart-alt");
+var cartnotice = document.querySelector(".cart-notice");
+addToCart.forEach((item, index) => {
+  item.onclick = (e) => {
+    cartList.innerHTML += `
+        <li class="cart-item">
+        <div class="cart-item-img">
+            <img src="./assets/sina-piryae-bBzjWthTqb8-unsplash.jpg" alt="">
+        </div>
+        <div class="cart-item-info">
+            <div class="row row-cart-item">
+                <div class="cart-item-name">
+                    <h5>
+                        Lorem
+                    </h5>
+                </div>
+                <div class="cart-item-price">
+                    <span class="">120$</span>
+                    <div class="cart-item-quantity">
+                        <span>
+                            x
+                        </span>
+                        <button class="change-quantity-button sub-button" onclick="reduceCartItem(event)">-</button>
+                        <span class="js-quantity">1</span>
+                        <button class="change-quantity-button add-button" onclick="augementCartItem(event)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cart-item">
+                <span>Salad</span>
+                <span class="del-cart-item" onclick="delCartItem(event)">Xoá</span>
+            </div>
+        </div>
+    </li>
+        `;
+    cartnotice.innerHTML = `${Number(cartnotice.innerHTML) + 1}`;
+    shoppingList.classList.remove("no-cart");
+  };
+});
+
+let shoppingList = document.querySelector(".shopping-list");
+//change quantity cart
+function delCartItem(e) {
+  let cartItems = document.querySelectorAll(".cart-item");
+  let cartItemsLength = cartItems.length;
+  e.target.parentNode.closest(".cart-item").remove();
+  cartnotice--;
+  cartItemsLength--;
+  if (cartItemsLength === 0) {
+    shoppingList.classList.add("no-cart");
+  }
+}
+function reduceCartItem(e) {
+  let cartItems = document.querySelectorAll(".cart-item");
+  let cartItemsLength = cartItems.length;
+  let quantityCart = e.target.parentNode.querySelector(".js-quantity");
+  if (Number(quantityCart.innerText) > 1 && Number(cartnotice.innerHTML) > 0) {
+    quantityCart.innerText = `${Number(quantityCart.innerText) - 1}`;
+    cartnotice.innerHTML = `${Number(cartnotice.innerHTML) - 1}`;
+  } else {
+    e.target.parentNode.closest(".cart-item").remove();
+    cartItemsLength--;
+    if (cartItemsLength === 0) {
+      shoppingList.classList.add("no-cart");
+    }
+  }
+}
+function augementCartItem(e) {
+  let quantityCart = e.target.parentNode.querySelector(".js-quantity");
+  console.log(quantityCart);
+  quantityCart.innerText = `${Number(quantityCart.innerText) + 1}`;
+  cartnotice.innerHTML = `${Number(cartnotice.innerHTML) + 1}`;
+}
+
 //login
 const loginBtn = document.querySelector(".login");
 // console.log(loginBtn);
@@ -110,9 +185,7 @@ function showLoginForm() {
 function hideLoginForm() {
   loginForm.classList.remove("open");
 }
-loginBtn.addEventListener("click", showLoginForm);
 
-loginClose.addEventListener("click", hideLoginForm);
 // modal.addEventListener("click", hideLoginForm);
 // modalStop.addEventListener("click", function (e) {
 //   e.stopPropagation();

@@ -180,7 +180,10 @@
               </div>
             </div>
           </div>
-          <div class="login align-items-center primary-color">
+          <div
+            class="login align-items-center primary-color"
+            onclick="showLoginForm()"
+          >
             <i class="bx bx-user-circle"></i>
           </div>
         </div>
@@ -596,7 +599,7 @@
       </section>
       <div class="login-form js-login">
         <div class="login-container js-login-container">
-          <div class="login-close js-login-close">
+          <div class="login-close js-login-close" onclick="hideLoginForm()">
             <i class="fa fa-times"></i>
           </div>
           <h2 class="login-header">

@@ -102,6 +102,7 @@ a {
   cursor: pointer;
   transition: 0.5s ease-in-out;
   display: flex;
+  margin-bottom: 8px;
 }
 
 .sidebar-item.active {
