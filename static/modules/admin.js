@@ -21,6 +21,13 @@ function closeSidebar() {
 
 const targetEl = document.querySelector(".container");
 const load = (nameFileHtml) => {
+  let sidebarItem = document.querySelectorAll(".sidebar .sidebar-item");
+  let currItem = document.querySelector(".sidebar-item.active");
+  console.log(currItem);
+  sidebarItem.forEach((item) => {
+    item.classList.add(".actice");
+    currItem.classList.remove("actice");
+  });
   fetch(`/${nameFileHtml}.html`)
     .then((res) => {
       if (res.ok) {
