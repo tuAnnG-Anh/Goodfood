@@ -175,9 +175,7 @@
           </div>
         </div>
         <div class="login align-items-center primary-color">
-          <a href="./admin.html">
-            <i class="bx bx-user-circle"></i>
-          </a>
+          <i class="bx bx-user-circle"></i>
         </div>
       </div>
     </div>
@@ -607,7 +605,7 @@
           </label>
           <form action="">
             <input
-              id="user-name"
+              id="username"
               type="text"
               class="login-input"
               placeholder="Enter your username"
@@ -618,16 +616,18 @@
               Password
             </label>
             <input
-              id="login-password"
-              type="text"
+              id="password"
+              type="password"
               class="login-input"
               placeholder="Enter password"
               required
             />
 
-            <button id="login-submit" type="submit">
-              Pay
-              <i class="fa fa-check"></i>
+            <button id="login-submit" type="submit" onclick="login()">
+              Login
+              <a href="./admin.html">
+                <i class="fa fa-check"></i>
+              </a>
             </button>
           </form>
         </div>
@@ -637,5 +637,6 @@
       </div>
     </div>
     <script src="./static/main.js"></script>
+    <script src="./static/modules/login.js"></script>
   </body>
 </html>

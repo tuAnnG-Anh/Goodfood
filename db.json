@@ -1,4 +1,12 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "password",
+      "role": "admin"
+    }
+  ],
   "categorys": [
     {
       "id": 1,
@@ -19,13 +27,6 @@
   ],
   "product": [
     {
-      "id_category": {},
-      "name_product": "Salad",
-      "price": "120",
-      "quantity": "202",
-      "id": 1
-    },
-    {
       "id_category": 1,
       "name_product": "432",
       "price": "432",
@@ -38,55 +39,6 @@
       "price": "4321",
       "quantity": "432111",
       "id": 8
-    },
-    {
-      "id_category": null,
-      "name_product": "",
-      "price": 0,
-      "quantity": 0,
-      "id": 10
-    },
-    {
-      "id_category": null,
-      "name_product": "",
-      "price": 0,
-      "quantity": 0,
-      "id": 11
-    },
-    {
-      "id_category": null,
-      "name_product": "",
-      "price": 0,
-      "quantity": 0,
-      "id": 12
-    },
-    {
-      "id_category": null,
-      "name_product": "",
-      "price": 0,
-      "quantity": 0,
-      "id": 13
-    },
-    {
-      "id_category": null,
-      "name_product": "",
-      "price": 0,
-      "quantity": 0,
-      "id": 14
-    },
-    {
-      "id_category": null,
-      "name_product": "Salad",
-      "price": 0,
-      "quantity": 0,
-      "id": 15
-    },
-    {
-      "id_category": {},
-      "name_product": "Salad",
-      "price": "120",
-      "quantity": "2000",
-      "id": 16
     }
   ]
 }
