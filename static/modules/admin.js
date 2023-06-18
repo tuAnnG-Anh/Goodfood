@@ -18,15 +18,20 @@ function closeSidebar() {
   let sidebar = document.querySelector(".sidebar");
   sidebar.classList.remove("open");
 }
-
+function productManager(e, nameFileHtml) {
+  let currItem = document.querySelector(".sidebar-item.active");
+  currItem.classList.remove("active");
+  e.target.classList.add("active");
+  load(nameFileHtml);
+}
+function categoryManager(e, nameFileHtml) {
+  let currItem = document.querySelector(".sidebar-item.active");
+  currItem.classList.remove("active");
+  e.target.classList.add("active");
+  load(nameFileHtml);
+}
 const targetEl = document.querySelector(".container");
 const load = (nameFileHtml) => {
-  let sidebarItem = document.querySelectorAll(".sidebar .sidebar-item");
-  let currItem = document.querySelector(".sidebar-item.active");
-  sidebarItem.forEach((item) => {
-    item.classList.add("active");
-    currItem.classList.remove("active");
-  });
   fetch(`/${nameFileHtml}.html`)
     .then((res) => {
       if (res.ok) {
@@ -35,6 +40,7 @@ const load = (nameFileHtml) => {
     })
     .then((htmlSnippet) => {
       targetEl.innerHTML = htmlSnippet;
+      startProduct();
     });
 };
 function logout() {

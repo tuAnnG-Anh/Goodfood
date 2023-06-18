@@ -5,7 +5,6 @@ function startProduct() {
   getProduct(renderProduct);
   getCategory(renderNameCategorys);
 }
-startProduct();
 
 function getProduct(callback) {
   fetch(productApi)

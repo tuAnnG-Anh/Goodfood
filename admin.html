@@ -35,10 +35,16 @@
             </div>
           </div>
           <ul class="manager">
-            <li class="fw-600 sidebar-item" onclick="load('product')">
+            <li
+              class="fw-600 sidebar-item active"
+              onclick="productManager(event,'product')"
+            >
               Product
             </li>
-            <li class="fw-600 sidebar-item active" onclick="load('category')">
+            <li
+              class="fw-600 sidebar-item"
+              onclick="categoryManager(event, 'category')"
+            >
               Category
             </li>
           </ul>

@@ -156,6 +156,7 @@ section {
 
 .shopping-bag {
   position: relative;
+  cursor: pointer;
 }
 
 .shopping-bag::after {

@@ -32,8 +32,9 @@ Array.from(menuItems).forEach((item, index) => {
 });
 //category
 
+let foodMenuList = document.querySelector(".food-item-all");
 let foodCategory = document.querySelector(".food-category");
-let categories = document.querySelectorAll(".food-item-all button");
+let categories = foodCategory.querySelectorAll("button");
 Array.from(categories).forEach((item, index) => {
   item.onclick = (e) => {
     let currCat = foodCategory.querySelector("button.active");
@@ -138,33 +139,33 @@ addToCart.forEach((item, index) => {
 let shoppingList = document.querySelector(".shopping-list");
 //change quantity cart
 function delCartItem(e) {
+  var cartnotice = document.querySelector(".cart-notice");
   let cartItems = document.querySelectorAll(".cart-item");
   let cartItemsLength = cartItems.length;
   e.target.parentNode.closest(".cart-item").remove();
-  cartnotice--;
+  cartnotice.innerHTML--;
   cartItemsLength--;
   if (cartItemsLength === 0) {
     shoppingList.classList.add("no-cart");
   }
 }
 function reduceCartItem(e) {
-  let cartItems = document.querySelectorAll(".cart-item");
-  let cartItemsLength = cartItems.length;
+  var cartnotice = document.querySelector(".cart-notice");
   let quantityCart = e.target.parentNode.querySelector(".js-quantity");
-  if (Number(quantityCart.innerText) > 1 && Number(cartnotice.innerHTML) > 0) {
+  if (Number(quantityCart.innerText) >= 1 && Number(cartnotice.innerHTML) > 0) {
     quantityCart.innerText = `${Number(quantityCart.innerText) - 1}`;
     cartnotice.innerHTML = `${Number(cartnotice.innerHTML) - 1}`;
-  } else {
+  }
+  if (Number(quantityCart.innerText) == 0) {
     e.target.parentNode.closest(".cart-item").remove();
-    cartItemsLength--;
-    if (cartItemsLength === 0) {
-      shoppingList.classList.add("no-cart");
-    }
+  }
+  if (Number(cartnotice.innerHTML) === 0) {
+    shoppingList.classList.add("no-cart");
   }
 }
 function augementCartItem(e) {
+  var cartnotice = document.querySelector(".cart-notice");
   let quantityCart = e.target.parentNode.querySelector(".js-quantity");
-  console.log(quantityCart);
   quantityCart.innerText = `${Number(quantityCart.innerText) + 1}`;
   cartnotice.innerHTML = `${Number(cartnotice.innerHTML) + 1}`;
 }
@@ -185,7 +186,9 @@ function showLoginForm() {
 function hideLoginForm() {
   loginForm.classList.remove("open");
 }
+loginBtn.addEventListener("click", showLoginForm);
 
+loginClose.addEventListener("click", hideLoginForm);
 // modal.addEventListener("click", hideLoginForm);
 // modalStop.addEventListener("click", function (e) {
 //   e.stopPropagation();
