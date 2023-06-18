@@ -7,7 +7,6 @@ function start() {
   handleCreateProduct();
 }
 start();
-
 function getProduct(callback) {
   fetch(productApi)
     .then(function (response) {
@@ -42,6 +41,8 @@ function renderProduct(products) {
             <tr class = "product-item-${product.id}" >
                 <td>${product.id}</td>
                 <td>${product.name_product}</td>
+                <td><img src="${product.product_img}" alt="" class="img-preview" /></td>
+
                 <td>${result.name_category}</td>
                 <td>${product.price}</td>
                 <td>${product.quantity}</td>
@@ -60,6 +61,45 @@ function renderProduct(products) {
     });
   });
 }
+function loadImgPreview() {
+  var imgPreview = document.querySelector(".img-preview_1");
+  imgPreview.style.display = "block";
+  var product_img = document.querySelector('input[name="product_img"]')
+    .files[0];
+  const reader = new FileReader();
+  reader.addEventListener(
+    "load",
+    () => {
+      imgPreview.src = reader.result;
+    },
+    false
+  );
+  if (product_img) {
+    reader.readAsDataURL(product_img);
+  }
+}
+
+function handleFileSelection(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const fileName = file.name;
+    const fileExtension = fileName.split(".").pop().toLowerCase();
+
+    if (
+      fileExtension === "jpg" ||
+      fileExtension === "jpeg" ||
+      fileExtension === "png"
+    ) {
+      loadImgPreview();
+      // File có đuôi phù hợp
+      console.log("File hợp lệ:", fileName);
+    } else {
+      // Đuôi file không hợp lệ
+      alert("Đuôi file không hợp lệ");
+    }
+  }
+}
+
 function clearInput() {
   var inputsForm = document.querySelectorAll("form input");
   inputsForm.forEach((input) => {
@@ -73,6 +113,9 @@ function handleCreateProduct() {
     var product_name = document.querySelector(
       'input[name="product_name"]'
     ).value;
+    var product_img = document
+      .querySelector(".img-preview_1")
+      .getAttribute("src");
     var product_price = document.querySelector(
       'input[name="product_price"]'
     ).value;
@@ -86,6 +129,7 @@ function handleCreateProduct() {
     var newProduct = {
       id_category: Number(category_id),
       name_product: product_name,
+      product_img: product_img,
       price: Number(product_price),
       quantity: Number(product_quantity),
     };
@@ -130,6 +174,7 @@ function handleDeleteProduct(id) {
 function handleUpdateProduct(id, idCatetegory) {
   var product_change = document.querySelectorAll(".product-item-" + id + " *");
   var product_name = document.querySelector('input[name="product_name"]');
+  var imgPreview = document.querySelector(".img-preview_1");
   var product_price = document.querySelector('input[name="product_price"]');
   var product_quantity = document.querySelector(
     'input[name="product_quantity"]'
@@ -137,12 +182,13 @@ function handleUpdateProduct(id, idCatetegory) {
   document.querySelector("select").options[
     (document.querySelector("select").selectedIndex = idCatetegory)
   ];
-
   product_name.value = product_change[1].innerText;
-  product_price.value = product_change[3].innerText;
-  product_quantity.value = product_change[4].innerText;
+  imgPreview.src = product_change[3].src;
+  console.log(product_change);
+  imgPreview.style.display = "block";
+  product_price.value = product_change[5].innerText;
+  product_quantity.value = product_change[6].innerText;
   var createBtn = document.querySelector(".btn-add");
-
   createBtn.innerText = "Save";
   createBtn.onclick = function () {
     updateProduct(id);
@@ -154,6 +200,7 @@ function updateProduct(id) {
   var updateProduct = {
     id_category: document.querySelector("select").options.selectedIndex,
     name_product: document.querySelector('input[name="product_name"]').value,
+    product_img: document.querySelector(".img-preview_1").getAttribute("src"),
     price: document.querySelector('input[name="product_price"]').value,
     quantity: document.querySelector('input[name="product_quantity"]').value,
   };

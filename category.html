@@ -1,0 +1,74 @@
+<div class="form-product">
+  <div class="input-product">
+    <div class="title">
+      <h3>Input product's detail information</h3>
+    </div>
+    <div class="input-product_main">
+      <form action="">
+        <div class="row-product">
+          <label for="" class="fw-600">Product Name</label>
+          <input type="text" name="product_name" />
+        </div>
+        <div class="row-product">
+          <label for="" class="fw-600">Image</label>
+          <input
+            type="file"
+            accept=".jpg, .jpeg, .png"
+            name="product_img"
+            onchange="handleFileSelection(event)"
+          />
+        </div>
+        <img src="" alt="" class="img-preview_1" />
+        <div class="row-product">
+          <label for="" class="fw-600">Category Name</label>
+          <select name="category_name" class="list-categorys">
+            <option value="default">--Please choose an option--</option>
+            <!-- <option value="lorem">Lorem</option>
+                                    <option value="ipsum">Ipsum</option>
+                                    <option value="dolor">Dolor
+                                    </option>
+                                    <option value="salad">Salad</option> -->
+          </select>
+        </div>
+        <div class="row-product">
+          <label for="" class="fw-600">Price</label>
+          <input type="text" name="product_price" />
+        </div>
+        <div class="row-product">
+          <label for="" class="fw-600">Quantity</label>
+          <input type="text" name="product_quantity" />
+        </div>
+        <!-- <div class="row-product">
+                                <label for="">Total</label>
+                                <input type="text" name="product_name">
+                            </div> -->
+        <button class="fw-600 btn-add" onclick="handleCreateProduct()">
+          Add Product
+        </button>
+        <button class="fw-600 btn-reset" type="button" onclick="clearInput()">
+          Reset
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="manager-product">
+    <div class="title">
+      <h3>Managerment Product</h3>
+    </div>
+    <div class="manager-product_main">
+      <table id="list-products">
+        <tr class="fw-600">
+          <th>ID</th>
+          <th>Product Name</th>
+          <th>Product Image</th>
+
+          <th>Category Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

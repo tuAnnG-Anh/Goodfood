@@ -1,25 +1,34 @@
 let apiUser = "http://localhost:3000/users";
 
-function login() {
-  getUser(handleLogin);
-}
-function getUser(callback) {
-  fetch(apiUser)
-    .then((respose) => {
-      return respose.json();
-    })
-    .then(callback);
-}
+//login
+const username = document.querySelector("#username");
+const password = document.querySelector("#password");
+const bntLogin = document.querySelector("#login-submit");
 
-function handleLogin(data) {
-  let userName = document.querySelector("#username").value;
-  let password = document.querySelector("#password").value;
-  data.forEach((item) => {
-    if (item.username === userName && item.password === password) {
-      window.location.href = "/admin.html";
-    } else {
-      alert("Tài khoản hoặc mật khẩu không chính xác");
-    }
-  });
-}
-handleLogin();
+// get user
+const getUser = async () => {
+  const response = await fetch(apiUser);
+  const data = await response.json();
+  return data;
+};
+
+// login
+bntLogin.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (username.value == "" || password.value == "") {
+    alert("Please enter your username and password");
+  } else {
+    getUser().then((data) => {
+      const user = data.find(
+        (user) =>
+          user.username == username.value && user.password == password.value
+      );
+      if (user) {
+        alert("Login success");
+        window.location.href = "/admin.html";
+      } else {
+        alert("Login failed");
+      }
+    });
+  }
+});

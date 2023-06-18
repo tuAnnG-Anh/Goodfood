@@ -1,3 +1,14 @@
+window.addEventListener("load", function () {
+  var loadingOverlay = document.getElementById("loading-overlay");
+  var content = document.getElementById("content");
+  // Loại bỏ phần overlay và hiển thị nội dung sau khi tải hoàn thành
+  setTimeout(() => {
+    loadingOverlay.style.display = "none";
+    content.style.opacity = 1;
+    content.style.display = "block";
+  }, 1000);
+});
+
 // back tot top
 let backToTopBtn = document.querySelector("#back-to-top");
 window.onscroll = () => {
@@ -23,9 +34,7 @@ Array.from(menuItems).forEach((item, index) => {
 
 let foodMenuList = document.querySelector(".food-item-all");
 let foodCategory = document.querySelector(".food-category");
-
 let categories = foodCategory.querySelectorAll("button");
-
 Array.from(categories).forEach((item, index) => {
   item.onclick = (e) => {
     let currCat = foodCategory.querySelector("button.active");
