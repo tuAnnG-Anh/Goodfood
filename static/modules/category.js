@@ -24,7 +24,7 @@ function renderCategorys(categorys) {
                     </button>
                 </td>
                 <td class="w-10">
-                    <button class=" btn-del" onclick = "handleDeletecategory(${category.id})">
+                    <button class=" btn-del" onclick = "handleDeletecategory(event,${category.id})">
                         Delete
                     </button>
                 </td>
@@ -67,16 +67,13 @@ function createCategory(data) {
 }
 
 //delete course
-function handleDeletecategory(id) {
+function handleDeletecategory(e, id) {
+  e.preventDefault();
   var listCategory = document.querySelector("#list-categorys");
   var delEl = listCategory.querySelector(
     `#list-categorys .category-item-${id}`
   );
-  delEl.remove();
-  console.log(delEl);
-}
-
-function delCategory() {
+  //   delEl.remove();
   var option = {
     method: "DELETE",
     headers: {
@@ -87,6 +84,8 @@ function delCategory() {
     return response.json();
   });
 }
+
+function delCategory() {}
 
 // update course
 function handleUpdatecategory(id, idCatetegory) {

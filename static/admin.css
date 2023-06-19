@@ -53,6 +53,11 @@ a {
   color: var(--white);
   display: block;
 }
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
 .sidebar {
   animation: left-to-right 0.3s ease-in-out;
   display: none;
