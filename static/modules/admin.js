@@ -32,41 +32,41 @@ function productManager(e, nameFileHtml) {
   }
 }
 
-function loadHtml(filename) {
-  let xhttp;
-  let element = document.querySelector(".container");
-  let file = filename;
-  if (file) {
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-      if (this.readyState == 4) {
-        if (this.status == 200) {
-          element.innerHTML = this.responseText;
-        }
-        if (this.status == 404) {
-          element.innerHTML = "<h1>Page not found.</h1>";
-        }
-      }
-    };
-    // window.location.href = `/${file}`;
-    xhttp.open("GET", `./${file}.html`, true);
-    xhttp.send();
-    return;
-  }
-}
-
-// const targetEl = document.querySelector(".container");
-// const load = (nameFileHtml) => {
-//   fetch(`/${nameFileHtml}.html`)
-//     .then((res) => {
-//       if (res.ok) {
-//         return res.text();
+// function loadHtml(filename) {
+//   let xhttp;
+//   let element = document.querySelector(".container");
+//   let file = filename;
+//   if (file) {
+//     xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function () {
+//       if (this.readyState == 4) {
+//         if (this.status == 200) {
+//           element.innerHTML = this.responseText;
+//         }
+//         if (this.status == 404) {
+//           element.innerHTML = "<h1>Page not found.</h1>";
+//         }
 //       }
-//     })
-//     .then((htmlSnippet) => {
-//       targetEl.innerHTML = htmlSnippet;
-//     });
-// };
+//     };
+//     // window.location.href = `/${file}`;
+//     xhttp.open("GET", `./${file}.html`, true);
+//     xhttp.send();
+//     return;
+//   }
+// }
+
+const targetEl = document.querySelector(".container");
+const load = (nameFileHtml) => {
+  fetch(`/${nameFileHtml}.html`)
+    .then((res) => {
+      if (res.ok) {
+        return res.text();
+      }
+    })
+    .then((htmlSnippet) => {
+      targetEl.innerHTML = htmlSnippet;
+    });
+};
 function logout() {
   if (confirm("Are you sure you want to sign out")) {
     window.location.href = "../Goodfood/index.html";
