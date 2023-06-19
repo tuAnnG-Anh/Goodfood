@@ -10,7 +10,7 @@ window.addEventListener("load", function () {
     content.style.opacity = 1;
     content.style.display = "block";
   }, 1000);
-  getProduct(renderProductMain);
+  // getProduct(renderProductMain);
 });
 function getProduct(callback) {
   fetch(productApi)
