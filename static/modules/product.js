@@ -130,6 +130,8 @@ function handleCreateProduct(event) {
     quantity: Number(product_quantity),
   };
   createProduct(newProduct);
+  getProduct(renderProduct);
+
   clearInput();
 }
 
@@ -157,6 +159,8 @@ function handleDeleteProduct(id) {
   fetch(productApi + "/" + id, option).then(function (response) {
     return response.json();
   });
+  getProduct(renderProduct);
+
   // .then(function () {
   //     var deleteCourse = document.querySelector('.course-item-' + id);
   //     if (deleteCourse) {
@@ -188,6 +192,7 @@ function handleUpdateProduct(id, idCatetegory) {
   createBtn.onclick = function () {
     updateProduct(id);
     createBtn.innerText = "Add";
+    getProduct(renderProduct);
   };
 }
 

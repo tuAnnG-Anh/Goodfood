@@ -23,6 +23,18 @@
     {
       "id": 4,
       "name_category": "Salad"
+    },
+    {
+      "name_category": "23",
+      "id": 5
+    },
+    {
+      "name_category": "2",
+      "id": 6
+    },
+    {
+      "name_category": "333",
+      "id": 8
     }
   ],
   "product": [

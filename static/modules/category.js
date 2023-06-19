@@ -61,19 +61,26 @@ function createCategory(data) {
     },
     body: JSON.stringify(data),
   };
-  fetch(categoryApi, option).then(function (response) {
-    return response.json();
-  });
+  fetch(categoryApi, option)
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("Đã xảy ra lỗi khi tạo danh mục.");
+      }
+      return response.json();
+    })
+    .then(function (responseData) {
+      // Xử lý dữ liệu phản hồi thành công
+      console.log(responseData);
+    })
+    .catch(function (error) {
+      // Xử lý lỗi
+      console.error(error);
+    });
 }
 
 //delete course
 function handleDeletecategory(e, id) {
   e.preventDefault();
-  var listCategory = document.querySelector("#list-categorys");
-  var delEl = listCategory.querySelector(
-    `#list-categorys .category-item-${id}`
-  );
-  //   delEl.remove();
   var option = {
     method: "DELETE",
     headers: {
@@ -85,7 +92,7 @@ function handleDeletecategory(e, id) {
   });
 }
 
-function delCategory() {}
+// function delCategory() {}
 
 // update course
 function handleUpdatecategory(id, idCatetegory) {
