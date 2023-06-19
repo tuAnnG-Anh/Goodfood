@@ -27,7 +27,7 @@ function renderNameCategorys(categorys) {
             <option value="${category.id}">${category.name_category}</option>
         `;
   });
-  listCategory.innerHTML += htmls.join("");
+  listCategory.innerHTML = htmls.join("");
 }
 function renderProduct(products) {
   var listProduct = document.getElementById("list-products");
