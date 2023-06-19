@@ -25,7 +25,7 @@ bntLogin.addEventListener("click", (e) => {
       );
       if (user) {
         alert("Login success");
-        window.location.href = "../Goodfood/admin.html";
+        window.location.href = "./admin.html";
         admin.html;
         // window.location.assign("/admin.htindex.htmlml");
       } else {

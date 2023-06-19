@@ -54,6 +54,19 @@ function loadHtml(filename) {
     return;
   }
 }
+
+// const targetEl = document.querySelector(".container");
+// const load = (nameFileHtml) => {
+//   fetch(`/${nameFileHtml}.html`)
+//     .then((res) => {
+//       if (res.ok) {
+//         return res.text();
+//       }
+//     })
+//     .then((htmlSnippet) => {
+//       targetEl.innerHTML = htmlSnippet;
+//     });
+// };
 function logout() {
   if (confirm("Are you sure you want to sign out")) {
     window.location.href = "../Goodfood/index.html";
