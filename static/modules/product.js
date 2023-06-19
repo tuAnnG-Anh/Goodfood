@@ -107,6 +107,7 @@ function clearInput() {
   document.querySelector("form select").selectedIndex = 0;
 }
 function handleCreateProduct(event) {
+  event.preventDefault();
   var product_name = document.querySelector('input[name="product_name"]').value;
   var product_img = document
     .querySelector(".img-preview_1")

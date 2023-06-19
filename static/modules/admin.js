@@ -7,6 +7,7 @@ window.addEventListener("load", function () {
     content.style.opacity = 1;
     content.style.display = "block";
   }, 1000);
+  startProduct();
   load("product");
 });
 
@@ -23,12 +24,12 @@ function productManager(e, nameFileHtml) {
   currItem.classList.remove("active");
   e.target.classList.add("active");
   load(nameFileHtml);
-}
-function categoryManager(e, nameFileHtml) {
-  let currItem = document.querySelector(".sidebar-item.active");
-  currItem.classList.remove("active");
-  e.target.classList.add("active");
-  load(nameFileHtml);
+  closeSidebar();
+  if (nameFileHtml == "product") {
+    startProduct();
+  } else {
+    startCategory();
+  }
 }
 const targetEl = document.querySelector(".container");
 const load = (nameFileHtml) => {
@@ -40,7 +41,6 @@ const load = (nameFileHtml) => {
     })
     .then((htmlSnippet) => {
       targetEl.innerHTML = htmlSnippet;
-      startProduct();
     });
 };
 function logout() {

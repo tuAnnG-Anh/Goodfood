@@ -1,21 +1,25 @@
-<div class="form-product">
-  <div class="input-product">
+<div class="form-category">
+  <div class="input-category">
     <div class="title">
-      <h3>Input product's detail information</h3>
+      <h3>Input category's detail information</h3>
     </div>
-    <div class="input-product_main">
+    <div class="input-category_main">
       <form action="">
-        <div class="row-product">
+        <div class="row-category">
           <label for="" class="fw-600">Category Name</label>
-          <input type="text" name="product_name" />
+          <input type="text" name="category_name" />
         </div>
 
-        <!-- <div class="row-product">
+        <!-- <div class="row-category">
                                 <label for="">Total</label>
-                                <input type="text" name="product_name">
+                                <input type="text" name="category_name">
                             </div> -->
-        <button class="fw-600 btn-add" onclick="handleCreateProduct()">
-          Add Product
+        <button
+          class="fw-600 btn-add"
+          type="button"
+          onclick="handleCreatecategory(event)"
+        >
+          Add category
         </button>
         <button class="fw-600 btn-reset" type="button" onclick="clearInput()">
           Reset
@@ -23,15 +27,15 @@
       </form>
     </div>
   </div>
-  <div class="manager-product">
+  <div class="manager-category">
     <div class="title">
-      <h3>Managerment Product</h3>
+      <h3>Managerment category</h3>
     </div>
-    <div class="manager-product_main">
-      <table id="list-products">
+    <div class="manager-category_main">
+      <table id="list-categorys">
         <tr class="fw-600">
           <th>ID</th>
-          <th>Category Name/th></th>
+          <th>Category Name</th>
           <th></th>
           <th></th>
         </tr>
