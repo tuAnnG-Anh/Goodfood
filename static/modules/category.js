@@ -24,7 +24,7 @@ function renderCategorys(categorys) {
                     </button>
                 </td>
                 <td class="w-10">
-                    <button class=" btn-del" onclick = "handleDeletecategory(${category.id})">
+                    <button class=" btn-del" onclick = "handleDeletecategory(event,${category.id})">
                         Delete
                     </button>
                 </td>
@@ -61,22 +61,26 @@ function createCategory(data) {
     },
     body: JSON.stringify(data),
   };
-  fetch(categoryApi, option).then(function (response) {
-    return response.json();
-  });
+  fetch(categoryApi, option)
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("Đã xảy ra lỗi khi tạo danh mục.");
+      }
+      return response.json();
+    })
+    .then(function (responseData) {
+      // Xử lý dữ liệu phản hồi thành công
+      console.log(responseData);
+    })
+    .catch(function (error) {
+      // Xử lý lỗi
+      console.error(error);
+    });
 }
 
 //delete course
-function handleDeletecategory(id) {
-  var listCategory = document.querySelector("#list-categorys");
-  var delEl = listCategory.querySelector(
-    `#list-categorys .category-item-${id}`
-  );
-  delEl.remove();
-  console.log(delEl);
-}
-
-function delCategory() {
+function handleDeletecategory(e, id) {
+  e.preventDefault();
   var option = {
     method: "DELETE",
     headers: {
@@ -87,6 +91,8 @@ function delCategory() {
     return response.json();
   });
 }
+
+// function delCategory() {}
 
 // update course
 function handleUpdatecategory(id, idCatetegory) {
