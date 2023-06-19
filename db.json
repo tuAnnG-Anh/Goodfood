@@ -27,6 +27,7 @@
     {
       "name_category": "23",
       "id": 5
+<<<<<<< HEAD
     },
     {
       "name_category": "2",
@@ -35,6 +36,8 @@
     {
       "name_category": "333",
       "id": 8
+=======
+>>>>>>> 70fa686340ee42bcead613b21d65b075a3c54df9
     }
   ],
   "product": [
