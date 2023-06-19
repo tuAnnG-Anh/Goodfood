@@ -1,5 +1,5 @@
-var productApi = "http://localhost:3000/product";
-var categoryApi = "http://localhost:3000/categorys";
+// var productApi = "http://localhost:3000/product";
+// var categoryApi = "http://localhost:3000/categorys";
 
 window.addEventListener("load", function () {
   var loadingOverlay = document.getElementById("loading-overlay");
@@ -12,53 +12,53 @@ window.addEventListener("load", function () {
   }, 1000);
   // getProduct(renderProductMain);
 });
-function getProduct(callback) {
-  fetch(productApi)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(callback);
-}
-function getCategory(callback) {
-  fetch(categoryApi)
-    .then((response) => {
-      return response.json();
-    })
-    .then(callback);
-}
-function renderProductMain(products) {
-  var listProduct = document.querySelector(".food-item-all");
-  products.map((product) => {
-    getCategory((categorys) => {
-      var result = categorys.find((category) => {
-        return category.id === product.id_category;
-      });
-      listProduct.innerHTML += `
-            <div class="food-item play-on-scroll ${result.name_category.toLowerCase()}-type">
-                <div class="item-wrap">
-                  <div class="item-image">
-                    <div
-                      class="img-food bg-img scale-up-center"
-                      style="
-                        background-image: url(${product.product_img});
-                      "
-                    ></div>
-                  </div>
-                  <div class="item-info align-items-center">
-                    <div>
-                      <h3>${product.name_product}</h3>
-                      <span>${product.price}$</span>
-                    </div>
-                    <div class="shopping-bag">
-                      <i class="bx bx-cart-alt primary-color"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        `;
-    });
-  });
-}
+// function getProduct(callback) {
+//   fetch(productApi)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(callback);
+// }
+// function getCategory(callback) {
+//   fetch(categoryApi)
+//     .then((response) => {
+//       return response.json();
+//     })
+//     .then(callback);
+// }
+// function renderProductMain(products) {
+//   var listProduct = document.querySelector(".food-item-all");
+//   products.map((product) => {
+//     getCategory((categorys) => {
+//       var result = categorys.find((category) => {
+//         return category.id === product.id_category;
+//       });
+//       listProduct.innerHTML += `
+//             <div class="food-item play-on-scroll ${result.name_category.toLowerCase()}-type">
+//                 <div class="item-wrap">
+//                   <div class="item-image">
+//                     <div
+//                       class="img-food bg-img scale-up-center"
+//                       style="
+//                         background-image: url(${product.product_img});
+//                       "
+//                     ></div>
+//                   </div>
+//                   <div class="item-info align-items-center">
+//                     <div>
+//                       <h3>${product.name_product}</h3>
+//                       <span>${product.price}$</span>
+//                     </div>
+//                     <div class="shopping-bag">
+//                       <i class="bx bx-cart-alt primary-color"></i>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+//         `;
+//     });
+//   });
+// }
 // back tot top
 let backToTopBtn = document.querySelector("#back-to-top");
 window.onscroll = () => {
@@ -144,8 +144,9 @@ bottomNavItems.forEach((item, index) => {
 });
 //cart
 var addToCart = document.querySelectorAll(".shopping-bag .bx-cart-alt");
-addToCart.forEach((item, index) => {
+addToCart.forEach((item) => {
   item.onclick = (e) => {
+    let shoppingList = document.querySelector(".shopping-list");
     var cartnotice = document.querySelector(".cart-notice");
     var cartList = document.querySelector(".cart-list-item");
     var nameProduct = e.target
