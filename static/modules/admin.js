@@ -56,8 +56,8 @@ function productManager(e, nameFileHtml) {
 // }
 
 const targetEl = document.querySelector(".container");
-const load = (nameFileHtml) => {
-  fetch(`/${nameFileHtml}.html`)
+const loadHtml = (nameFileHtml) => {
+  fetch(`./${nameFileHtml}.html`)
     .then((res) => {
       if (res.ok) {
         return res.text();
