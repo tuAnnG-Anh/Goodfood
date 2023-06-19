@@ -31,6 +31,7 @@ function renderNameCategorys(categorys) {
 }
 function renderProduct(products) {
   var listProduct = document.getElementById("list-products");
+  listProduct.innerHTML = "";
   products.map((product) => {
     getCategory((categorys) => {
       var result = categorys.find((category) => {
@@ -129,10 +130,10 @@ function handleCreateProduct(event) {
     price: Number(product_price),
     quantity: Number(product_quantity),
   };
+  clearInput();
+
   createProduct(newProduct);
   getProduct(renderProduct);
-
-  clearInput();
 }
 
 function createProduct(data) {

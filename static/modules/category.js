@@ -31,7 +31,7 @@ function renderCategorys(categorys) {
              </tr>
         `;
   });
-  listCategory.innerHTML += htmls.join("");
+  listCategory.innerHTML = htmls.join("");
 }
 
 function clearInput() {
@@ -49,8 +49,9 @@ function handleCreatecategory(event) {
   var newcategory = {
     name_category: category_name,
   };
-  createCategory(newcategory);
   clearInput();
+  createCategory(newcategory);
+  getCategory(renderCategorys);
 }
 
 function createCategory(data) {
@@ -90,6 +91,7 @@ function handleDeletecategory(e, id) {
   fetch(categoryApi + "/" + id, option).then(function (response) {
     return response.json();
   });
+  getCategory(renderCategorys);
 }
 
 // function delCategory() {}
