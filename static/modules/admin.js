@@ -9,7 +9,6 @@ window.addEventListener("load", function () {
   }, 1000);
   loadHtml("product");
   startProduct();
-  startCategory();
 });
 
 function openSidebar() {
@@ -21,16 +20,16 @@ function closeSidebar() {
   sidebar.classList.remove("open");
 }
 function productManager(e, nameFileHtml) {
-  let currItem = document.querySelector(".sidebar-item.active");
-  currItem.classList.remove("active");
-  e.target.classList.add("active");
-  loadHtml(nameFileHtml);
-  closeSidebar();
   if (nameFileHtml == "product") {
     startProduct();
   } else {
     startCategory();
   }
+  let currItem = document.querySelector(".sidebar-item.active");
+  currItem.classList.remove("active");
+  e.target.classList.add("active");
+  loadHtml(nameFileHtml);
+  closeSidebar();
 }
 
 // function loadHtml(filename) {

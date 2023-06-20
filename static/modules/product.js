@@ -178,13 +178,6 @@ function handleDeleteProduct(id) {
     return response.json();
   });
   getProduct(renderProduct);
-
-  // .then(function () {
-  //     var deleteCourse = document.querySelector('.course-item-' + id);
-  //     if (deleteCourse) {
-  //         deleteCourse.remove();
-  //     }
-  // })
 }
 
 // update course
@@ -234,8 +227,6 @@ function updateProduct(id) {
       return response.json();
     })
     .then(function () {
-      // document.querySelector('.course-item-' + id + ' h3').innerText = updateCourse.name;
-      // document.querySelector('.course-item-' + id + ' p').innerText = updateCourse.description;
       document.querySelector('input[name="name"]').value = "";
       document.querySelector('input[name="description"]').value = "";
     });
