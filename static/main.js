@@ -9,8 +9,8 @@ window.addEventListener("load", function () {
     loadingOverlay.style.display = "none";
     content.style.opacity = 1;
     content.style.display = "block";
+    getProduct(renderProductMain);
   }, 1000);
-  getProduct(renderProductMain);
 });
 function getProduct(callback) {
   fetch(productApi)
@@ -26,6 +26,7 @@ function getCategory(callback) {
     })
     .then(callback);
 }
+
 function renderProductMain(products) {
   var listProduct = document.querySelector(".food-item-all");
   products.map((product) => {
@@ -33,7 +34,8 @@ function renderProductMain(products) {
       var result = categorys.find((category) => {
         return category.id === product.id_category;
       });
-      listProduct.innerHTML += `
+      if (result !== undefined && listProduct !== null) {
+        listProduct.innerHTML += `
             <div class="food-item play-on-scroll ${result.name_category.toLowerCase()}-type">
                 <div class="item-wrap">
                   <div class="item-image">
@@ -56,6 +58,7 @@ function renderProductMain(products) {
                 </div>
               </div>
         `;
+      }
     });
   });
 }
@@ -72,7 +75,6 @@ window.onscroll = () => {
   }
 };
 let menuItems = document.getElementsByClassName("menu-nav-item");
-
 Array.from(menuItems).forEach((item, index) => {
   item.onclick = (e) => {
     let currMenu = document.querySelector(".menu-nav-item.active");
@@ -83,16 +85,18 @@ Array.from(menuItems).forEach((item, index) => {
 //category
 let foodMenuList = document.querySelector(".food-item-all");
 let foodCategory = document.querySelector(".food-category");
-let categories = foodCategory.querySelectorAll("button");
-Array.from(categories).forEach((item, index) => {
-  item.onclick = (e) => {
-    let currCat = foodCategory.querySelector("button.active");
-    currCat.classList.remove("active");
-    e.target.classList.add("active");
-    foodMenuList.classList =
-      "food-item-all row " + e.target.getAttribute("data-food-type");
-  };
-});
+if (foodMenuList !== null) {
+  let categories = foodCategory.querySelectorAll("button");
+  Array.from(categories).forEach((item, index) => {
+    item.onclick = (e) => {
+      let currCat = foodCategory.querySelector("button.active");
+      currCat.classList.remove("active");
+      e.target.classList.add("active");
+      foodMenuList.classList =
+        "food-item-all row " + e.target.getAttribute("data-food-type");
+    };
+  });
+}
 
 //scroll
 let scroll =
@@ -242,9 +246,7 @@ function showLoginForm() {
 function hideLoginForm() {
   loginForm.classList.remove("open");
 }
-loginBtn.addEventListener("click", showLoginForm);
 
-loginClose.addEventListener("click", hideLoginForm);
 // modal.addEventListener("click", hideLoginForm);
 // modalStop.addEventListener("click", function (e) {
 //   e.stopPropagation();

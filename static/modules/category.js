@@ -31,7 +31,9 @@ function renderCategorys(categorys) {
              </tr>
         `;
   });
-  listCategory.innerHTML = htmls.join("");
+  if (listCategory !== null) {
+    listCategory.innerHTML = htmls.join("");
+  }
 }
 
 function clearInput() {
@@ -45,7 +47,6 @@ function handleCreatecategory(event) {
   var category_name = document.querySelector(
     'input[name="category_name"]'
   ).value;
-  console.log(category_name);
   var newcategory = {
     name_category: category_name,
   };

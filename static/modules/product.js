@@ -28,7 +28,9 @@ function renderNameCategorys(categorys) {
             <option value="${category.id}">${category.name_category}</option>
         `;
   });
-  listCategory.innerHTML = htmls.join("");
+  if (listCategory !== null) {
+    listCategory.innerHTML = htmls;
+  }
 }
 function renderProduct(products) {
   var listProduct = document.getElementById("list-products");
@@ -47,7 +49,8 @@ function renderProduct(products) {
       var result = categorys.find((category) => {
         return category.id === product.id_category;
       });
-      listProduct.innerHTML += `
+      if (result !== undefined && listProduct !== null) {
+        listProduct.innerHTML += `
             <tr class = "product-item-${product.id}" >
                 <td>${product.id}</td>
                 <td>${product.name_product}</td>
@@ -68,6 +71,7 @@ function renderProduct(products) {
                 </td>
              </tr>
         `;
+      }
     });
   });
 }
@@ -197,7 +201,6 @@ function handleUpdateProduct(id, idCatetegory) {
   ];
   product_name.value = product_change[1].innerText;
   imgPreview.src = product_change[3].src;
-  console.log(product_change);
   imgPreview.style.display = "block";
   product_price.value = product_change[5].innerText;
   product_quantity.value = product_change[6].innerText;
