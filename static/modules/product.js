@@ -23,7 +23,7 @@ function getCategory(callback) {
 function renderNameCategorys(categorys) {
   var listCategory = document.querySelector(".list-categorys");
   var htmls = `<option value="default">--Please choose an option--</option>`;
-  var htmls += categorys.map((category) => {
+  htmls += categorys.map((category) => {
     return `
             <option value="${category.id}">${category.name_category}</option>
         `;
@@ -36,7 +36,6 @@ function renderProduct(products) {
           <th>ID</th>
           <th>Product Name</th>
           <th>Product Image</th>
-
           <th>Category Name</th>
           <th>Price</th>
           <th>Quantity</th>
