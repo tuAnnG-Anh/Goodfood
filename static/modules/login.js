@@ -26,7 +26,6 @@ bntLogin.addEventListener("click", (e) => {
       if (user) {
         alert("Login success");
         window.location.href = "./admin.html";
-        admin.html;
         // window.location.assign("/admin.htindex.htmlml");
       } else {
         alert("Login failed");

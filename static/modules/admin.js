@@ -9,6 +9,7 @@ window.addEventListener("load", function () {
   }, 1000);
   loadHtml("product");
   startProduct();
+  startCategory();
 });
 
 function openSidebar() {
@@ -20,11 +21,6 @@ function closeSidebar() {
   sidebar.classList.remove("open");
 }
 function productManager(e, nameFileHtml) {
-  if (nameFileHtml == "product") {
-    startProduct();
-  } else {
-    startCategory();
-  }
   let currItem = document.querySelector(".sidebar-item.active");
   currItem.classList.remove("active");
   e.target.classList.add("active");
@@ -65,6 +61,11 @@ const loadHtml = (nameFileHtml) => {
     })
     .then((htmlSnippet) => {
       targetEl.innerHTML = htmlSnippet;
+      if (nameFileHtml == "product") {
+        startProduct();
+      } else {
+        startCategory();
+      }
     });
 };
 function logout() {
