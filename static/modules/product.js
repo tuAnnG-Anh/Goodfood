@@ -102,6 +102,7 @@ function handleFileSelection(event) {
 
 function clearInput() {
   var inputsForm = document.querySelectorAll("form input");
+  document.querySelector(".img-preview_1").setAttribute("display", "none");
   inputsForm.forEach((input) => {
     input.value = "";
   });
@@ -191,6 +192,7 @@ function handleUpdateProduct(id, idCatetegory) {
   var createBtn = document.querySelector(".btn-add");
   createBtn.innerText = "Save";
   createBtn.onclick = function () {
+    clearInput();
     updateProduct(id);
     createBtn.innerText = "Add";
     getProduct(renderProduct);

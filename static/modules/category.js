@@ -107,6 +107,7 @@ function handleUpdatecategory(id, idCatetegory) {
   createBtn.innerText = "Save";
   createBtn.onclick = function () {
     updateCategory(id);
+    getCategory(renderCategorys);
     createBtn.innerText = "Add";
   };
 }
