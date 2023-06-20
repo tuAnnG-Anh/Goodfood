@@ -7,9 +7,8 @@ window.addEventListener("load", function () {
     content.style.opacity = 1;
     content.style.display = "block";
   }, 1000);
-  startProduct();
-  startCategory();
   loadHtml("product");
+  startProduct();
 });
 
 function openSidebar() {
@@ -21,6 +20,11 @@ function closeSidebar() {
   sidebar.classList.remove("open");
 }
 function productManager(e, nameFileHtml) {
+  if (nameFileHtml == "product") {
+    startProduct();
+  } else {
+    startCategory();
+  }
   let currItem = document.querySelector(".sidebar-item.active");
   currItem.classList.remove("active");
   e.target.classList.add("active");
